@@ -1,0 +1,9 @@
+<fb:header decoration="add_border" icon="false">Movies</fb:header>
+
+<div style="padding: 1em;">
+  <ul style="margin: 0 1em;padding: 0;">
+    <% @movies.each do |movie| %>
+      <li><%= link_to h(movie.title), movie %></li>
+    <% end %>
+  </ul>
+</div>

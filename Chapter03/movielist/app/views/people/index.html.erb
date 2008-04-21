@@ -1,0 +1,25 @@
+<h1>Listing people</h1>
+
+<% form_tag people_path, :method => :get do %>
+Find a person: <%= text_field_tag :query %>
+<% end %>
+
+<ul id="listing">
+  <% @people.each_with_index do |person, i| %>
+    <li<%= i%3 == 0 ? ' class="clear"' : '' %>>
+      <%= link_to image_tag(person.image.public_filename, :alt => ''), person if person.image %>
+      <h2><%= link_to h(person.full_name), person %></h2>
+      <%= admin_link_to 'edit', edit_person_path(person) %> |
+      <%= admin_link_to 'destroy', person, {
+        :confirm => 'Are you sure?', 
+        :method => :delete
+      } %>
+    </li>
+  <% end%>
+</ul>
+
+<br class="clear" />
+
+<%= will_paginate %>
+
+<%= link_to 'New person', new_person_path %>

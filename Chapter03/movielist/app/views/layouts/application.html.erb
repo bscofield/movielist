@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>MovieList: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+
+<div id="header">
+  <span id="logo">MovieList</span>
+  
+  <ul id="navigation">
+    <li><%= link_to 'movies', movies_path %></li>
+    <li><%= link_to 'releases', releases_path %></li>
+    <li><%= link_to 'people', people_path %></li>
+    <% unless logged_in? %>
+      <li><%= link_to 'log in', new_session_path %></li>
+    <% else %>
+      <li><%= link_to 'interests', user_interests_path %></li>
+      <li><%= link_to 'notifications', user_notifications_path %></li>
+      <% if current_user.administrator? %>
+        <li><%= link_to 'users',  users_path %></li>
+      <% end %>
+      <li><%= link_to 'log out', session_path, :method => :delete %></li>
+    <% end %>
+  </ul>
+</div>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield  %>
+
+</body>
+</html>

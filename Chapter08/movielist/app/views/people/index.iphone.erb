@@ -1,0 +1,17 @@
+<h1>Listing people</h1>
+
+<% form_tag people_path, :method => :get do %>
+Find a person: <%= text_field_tag :query %>
+<% end %>
+
+<ul id="listing">
+  <% @people.each do |person| %>
+    <li>
+      <h2><%= link_to h(person.full_name), person %></h2>
+    </li>
+  <% end%>
+</ul>
+
+<br class="clear" />
+
+<%= will_paginate %>

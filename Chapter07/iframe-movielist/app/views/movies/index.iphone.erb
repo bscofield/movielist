@@ -1,0 +1,24 @@
+<div class="toolbar">
+  <h1 id="pageTitle">MovieList</h1>
+  <%= link_to 'back', '#', :id => 'backButton', :class => 'button' %>
+  <%= link_to 'Search', '#searchForm', :class => 'button' %>
+</div>
+
+<ul title="Movies" selected="true">
+  <% @movies.each do |movie| %>
+    <li>
+      <%= link_to h(movie.title), movie %>
+    </li>
+  <% end %>
+</ul>
+
+<% form_tag movies_path, :method => :get, 
+  :id => 'searchForm', :class => 'dialog' do %>
+<fieldset>
+  <h1>Find a Movie</h1>
+  <%= link_to 'Cancel', '#', :class => 'button leftButton', :type => 'cancel' %>
+  <%= link_to 'Submit', '#', :class => 'button blueButton', :type => 'submit' %>
+  <label for="query">Movie Title</label>
+  <%= text_field_tag :query %>
+</fieldset>
+<% end %>

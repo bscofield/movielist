@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  record_id: 1
+  record_type: MyString
+  event: MyString
+
+two:
+  record_id: 1
+  record_type: MyString
+  event: MyString

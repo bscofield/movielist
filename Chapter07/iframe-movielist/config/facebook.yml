@@ -1,0 +1,19 @@
+common: &common
+    key: your-key
+    secret: your-secret
+    canvas_path: /bds-movielist-test/
+    callback_path: /
+    tunnel:
+      username: yourLoginName
+      host: www.yourexternaldomain.com
+      port: 1234
+      local_port: 5678
+
+development:
+    <<: *common
+
+test:
+    <<: *common
+
+production:
+    <<: *common

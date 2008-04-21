@@ -1,0 +1,47 @@
+<h1>Listing releases</h1>
+
+<% unless @releases.empty? %>
+  <% unless @own_releases.empty? %>
+  <h2>Releases for your interests</h2>
+  <ul>
+  <% @own_releases.each do |release| %>
+  <li>
+    <%= link_to h(release.movie.title), release.movie %> - 
+    <%= h release.format %> on <%= release.released_on.to_s(:short) %>
+  </li>
+  <% end %>
+  </ul>
+  <% else %>
+  <p>There are no upcoming releases for your interests</p>
+  <% end %>
+
+  <% unless @friend_releases.empty? %>
+  <h2>Releases for your friends' interests</h2>
+  <ul>
+  <% @friend_releases.each do |release| %>
+    <li>
+      <%= link_to h(release.movie.title), release.movie %> - 
+      <%= h release.format %> on <%= release.released_on.to_s(:short) %>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no upcoming releases for your friends' interests</p>
+  <% end %>
+
+  <% unless @other_releases.empty? %>
+  <h2>Other releases</h2>
+  <ul>
+  <% @other_releases.each do |release| %>
+    <li>
+      <%= link_to h(release.movie.title), release.movie %> - 
+      <%= h release.format %> on <%= release.released_on.to_s(:short) %>
+    </li>
+  <% end %>
+  </ul>
+  <% else %>
+  <p>There are no other upcoming releases</p>
+  <% end %>
+<% else %>
+<p>There are no upcoming releases</p>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  movie: one
+  format: theater
+  released_on: 2008-01-25
+
+two:
+  movie: one
+  format: dvd
+  released_on: 2008-01-25

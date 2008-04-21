@@ -1,0 +1,16 @@
+<fb:visible-to-user uid="<%= uid %>">
+  <fb:subtitle>You have <%= pluralize(movies.size, 'interest') %></fb:subtitle>
+</fb:visible-to-user>
+
+<% unless movies.empty? %>
+<ul>
+  <% movies.each do |movie| %>
+  <li><%= link_to h(movie.title), "http://apps.facebook.com#{movie_path(movie)}" %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>You have not selected any interests</p>
+<% end %>
+
+<p><%= link_to 'View more movies and upcoming releases at MovieList', 
+  "http://apps.facebook.com#{root_path}" %></p>

@@ -1,0 +1,74 @@
+<div id="details">
+  <%= admin_link_to 'Edit', edit_movie_path(@movie) %>
+
+  <%= image_tag @movie.image.public_filename if @movie.image %>
+
+  <h1><%= h @movie.title %></h1>
+  <h3 class="rating"><%= h @movie.rating %></h3>
+
+  <%= simple_format h(@movie.description) unless @movie.description.blank? %>
+
+  <% if logged_in? %>
+    <% unless current_user.interested_in?(@movie) %>
+      <% form_for current_user.interests.build(:movie => @movie), 
+          :url => user_interests_path do |f| %>
+        <%= f.hidden_field :movie_id %>
+        <%= content_tag :button, 'Add this as an interest', :type => 'submit' %>
+      <% end %>
+    <% else %>
+      <p>You have added this movie as an interest</p>
+    <% end %>
+  <% end %>
+
+  <% unless @movie.releases.empty? %>
+    <div class="module">
+      <b>Releases:</b>
+      <% @movie.releases.each do |release| %>
+        <br /><%= h release %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% unless @movie.roles.empty? %>
+    <div class="module">
+      <b>People:</b>
+      <% @movie.roles.each do |role| %>
+        <br /><%= link_to h(role.person.full_name), role.person %> - 
+          <%= role.name %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="comments">
+  <h2>Friends</h2>
+  <% if @friends %>
+    <ul>
+      <% @friends.user_list.each do |friend| %>
+        <li>
+          <%= image_tag friend.pic_square %>
+          <%= "#{friend.first_name} #{friend.last_name}" %>
+        </li>
+      <% end %>
+    </ul>
+  <% elsif fbsession.ready? %>
+    <p>None of your friends are interested in this film... yet. Be the first to add it!</p>
+  <% end %>
+
+  <h2>Comments</h2>
+  <%= 'No one has commented on this movie' if @movie.comments.empty? %>
+  <ul>
+    <%= @movie.comments.map { |comment| 
+         content_tag :li, h(comment.text) 
+       }.join("\n") %>
+  </ul>
+  </p>
+
+  <% form_for @movie.comments.build, {
+       :url => movie_comments_path(@movie), 
+       :id => 'comment-form'
+     } do |f| %>
+    <%= f.text_area :text, :rows => 5 %><br />
+    <%= submit_tag 'Add Your Comment' %>
+  <% end %>
+</div>

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>JSON Client</title>
+<script type="text/javascript" src="/javascripts/prototype.js"></script>
+<script type="text/javascript">
+// JSON processing will go here
+new Ajax.Request('/user/interests.json', {
+  method:'get',
+  onSuccess: function(data){
+    var interests = data.responseText.evalJSON();
+    displayInterestList(interests);
+  },
+  on406: function(data){
+    $('target').update('Please log in at MovieList to continue');
+  }
+});
+
+function submitForm() {	
+  new Ajax.Request('/user/interests.json', { 
+    asynchronous: true, 
+    evalScripts: true, 
+    parameters: Form.serialize('interest-form'),
+    onSuccess: function(data){
+      var interests = data.responseText.evalJSON();
+      displayInterestList(interests);
+    },
+    on422: function(data){
+      var interests = data.responseText.evalJSON();
+      displayInterestList(interests, 
+        "The movie title you entered was not found. Please try again.");
+    }
+  }); 
+}
+
+function removeInterest(id) {
+  new Ajax.Request('/user/interests/' + id + '.json', { 
+    method: 'post',
+    asynchronous: true, 
+    evalScripts: true, 
+    parameters: '_method=delete',
+    onSuccess: function(data){
+      var interests = data.responseText.evalJSON();
+      displayInterestList(interests);
+    }
+  }); 
+}
+
+function displayInterestList(interests, message) {
+  var markup = '<ul>';
+  interests.each(function(interest) {
+    markup += '<li>' + interest.movie_title;
+    markup += ' <a href="#" onclick="removeInterest(' + interest.id;
+    markup += ');return false;">remove</a></li>';
+  })
+  markup += '</ul>';
+  
+  if (message) {
+    markup += '<p>' + message + '</p>';
+  }
+  
+  markup += '<form method="post" id="interest-form" ';
+  markup += 'onsubmit="submitForm(); return false;" ';
+  markup += 'action="/user/interests.json">';
+  markup += 'Add a Movie: ';
+  markup += '<input type="text" name="interest[movie_title]" />';
+  markup += '<input type="submit" value="Save" />';
+  markup += '</form>';
+
+  $('target').update(markup)
+}
+</script>
+</head>
+<body>
+
+<div id="target">
+nothing yet!
+</div>
+
+</body>
+</html>

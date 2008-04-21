@@ -1,0 +1,208 @@
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: .8em;
+	text-align:center;
+	margin:0;
+	padding:0;
+	background:#FFF url(http://www.squidoo.com/images/site-bkgnd.gif) repeat-x top;
+	background-attachment:fixed;
+}
+a, a:visited {
+	color: #000;
+
+}
+a:hover {
+	color: #fff;
+	background-color: #EB821E;
+}
+#container {
+	width: 520px;
+	margin: 0 auto;
+}
+#header {
+	border: 1px solid #000;
+	border-top: 0px;
+	margin-bottom: 50px;
+	width: 520px;
+	background-color: #fff;
+	height: 100px;
+}
+#nav {
+	float: right;
+	text-align: left;
+	margin-right: 50px;
+	padding-top: 10px;
+}
+#nav ul, #nav ul li {
+	list-style-type: none;
+}
+#logo {
+	float: left;
+	width: 270px;
+}
+.bigBox {
+	border: 1px solid #000;
+	padding: 10px;
+	width: 500px;
+	min-height: 300px;
+	text-align: left;
+	background-color: #fff;
+}
+
+#buttons {
+	margin-bottom: 10px;
+	text-align: right;
+}
+.break{
+	clear:both;
+	visibility:hidden;
+}
+#errors, #info {
+	margin : 1em 0 1em 4em;
+	padding : .5em;
+}
+#errors {
+	border : 2px solid #d00;
+}
+.editing {
+	display : none;
+}
+img { 
+	border: 0px; 
+}
+fieldset { 
+	border: none; 
+}
+label { 
+	cursor: pointer; 
+}
+.module_container { 
+	width: 490px; 
+}
+.module_container h1 { 
+	padding: 3px; 
+	color: #FFF; 
+	font: bold 12px/18px Verdana, Arial, Helvetica, sans-serif; 
+	text-transform: uppercase; 
+	background: #005189 
+}
+.module_container h2 { 
+	margin: 12px 0 1px 0; 
+	padding-top: 5px; 
+	font-size: 14px; 
+	background-color: transparent; 
+	border-top: 0px; 
+}
+.module_container h3 { 
+	margin: 6px 0 0 0; 
+	padding: 0; 
+}
+.module_container p { 
+	margin: 0; 
+	padding-bottom: 10px; 
+}
+.module_container .textfield, .module_container textarea { 
+	font: normal 14px Arial, Helvetica, sans-serif; 
+	padding: 6px; 
+	width: 95%; 
+}
+.module_container .textfield_small { 
+	font: normal 14px Arial, Helvetica, sans-serif; 
+	padding: 6px; 
+	width: auto; 
+}
+.module_container .checkbox { 
+	width: auto; 
+}
+.tabcontent ul { 
+	margin: 10px 0; 
+	padding: 0; 
+	list-style: none; 
+	font-size: 12px; 
+}
+.tabcontent li { 
+	padding: 0 0 6px 0; 
+}
+.smallLink { 
+	font-size: 10px; 
+}
+#titleText, #titleForm, #subText, #subForm, #descText, #descForm { 
+	padding: 5px; 
+}
+#subForm h2, #descForm h2{ 
+	padding-top: 0px; 
+	margin-top: 0px; 
+}
+#bulkList li { 
+	cursor: move; 
+	margin-bottom: 8px; 
+}
+#panel1, #panel2 {
+	margin: 0;
+	padding: 0;
+	width: 480px;
+	margin: 30px 0 30px 0;
+}
+.tabs {
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid #666;
+	font: normal 14px Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.tabs ul {
+	margin: 10px 0 3px 0;
+	padding: 0;
+}
+.tabs li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+.tabs li a {
+	padding: 3px 4px 3px 4px;
+	margin: 0;
+	border: 1px solid #666;
+	background: #ccc;
+	text-decoration: none;
+	color: #393939;
+	font-size: 14px;
+	font-weight: bold;
+}
+.tabs li a:hover {
+	color: #393939;
+	padding: 6px 4px 3px 4px;
+	background: #fff;
+	border: 1px solid #666;
+}
+
+.tabs li a.current, .tabs li a.current:hover {
+	background: #eee;
+	border: 1px solid #666;
+	padding: 6px 4px 3px 4px;
+	margin: 0;
+	border-bottom: 1px solid #eee;
+	color: #000;
+}
+.tabcontent {
+	margin: 0;
+	padding: 10px;
+	width: 460px;
+	background: #eee;
+	border: solid #666;
+	border-width: 0 1px 1px 1px;
+}
+.tabcontent h3 {
+	margin: 0;
+	padding: 10px 0 4px 0;
+	font: normal 20px Verdana, Arial, Helvetica, sans-serif;
+	color: #393939;
+}
+.tabcontent p {
+	margin: 0;
+	padding: 0 0 10px 0;
+	font: normal 11px/18px Verdana, Arial, Helvetica, sans-serif;
+	color: #666;
+}

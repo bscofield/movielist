@@ -1,0 +1,39 @@
+<div id="details">
+  <%= image_tag @movie.image.public_filename if @movie.image %>
+
+  <h1><%= h @movie.title %></h1>
+  <h3 class="rating"><%= h @movie.rating %></h3>
+
+  <%= simple_format h(@movie.description) unless @movie.description.blank? %>
+
+  <% if logged_in? %>
+    <% unless current_user.interested_in?(@movie) %>
+      <% form_for current_user.interests.build(:movie => @movie), 
+          :url => user_interests_path do |f| %>
+        <%= f.hidden_field :movie_id %>
+        <%= content_tag :button, 'Add this as an interest', :type => 'submit' %>
+      <% end %>
+    <% else %>
+      <p>You have added this movie as an interest</p>
+    <% end %>
+  <% end %>
+
+  <% unless @movie.releases.empty? %>
+    <div class="module">
+      <b>Releases:</b>
+      <% @movie.releases.each do |release| %>
+        <br /><%= h release %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% unless @movie.roles.empty? %>
+    <div class="module">
+      <b>People:</b>
+      <% @movie.roles.each do |role| %>
+        <br /><%= link_to h(role.person.full_name), role.person %> - 
+          <%= role.name %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

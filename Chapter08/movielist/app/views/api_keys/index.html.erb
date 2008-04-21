@@ -1,0 +1,22 @@
+<h1>Listing api_keys</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Identifier</th>
+  </tr>
+
+<% for api_key in @api_keys %>
+  <tr>
+    <td><%=h api_key.user_id %></td>
+    <td><%=h api_key.identifier %></td>
+    <td><%= link_to 'Show', user_api_key_path(api_key) %></td>
+    <td><%= link_to 'Destroy', user_api_key_path(api_key), 
+              :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New api_key', new_user_api_key_path %>

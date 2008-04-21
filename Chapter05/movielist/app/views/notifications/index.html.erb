@@ -1,0 +1,17 @@
+<h1>Listing notifications</h1>
+
+<table>
+  <tr>
+    <th>Movie</th>
+    <th>Format</th>
+    <th>Released on</th>
+  </tr>
+
+<% @releases.each do |release| %>
+  <tr>
+    <td><%=h release.movie.title %></td>
+    <td><%=h release.format %></td>
+    <td><%=h release.released_on %></td>
+  </tr>
+<% end %>
+</table>

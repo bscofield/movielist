@@ -1,0 +1,19 @@
+<div id="details">
+  <%= admin_link_to 'Edit', edit_person_path(@person), :class => 'html' %>
+
+  <%= image_tag @person.image.public_filename if @person.image %>
+
+  <h1><%= h @person.full_name %></h1>
+
+  <%= simple_format h(@person.biography) unless @person.biography.blank? %>
+
+  <% unless @person.roles.empty? %>
+    <div class="module">
+      <b>Movies:</b>
+      <% @person.roles.each do |role| %>
+        <br /><%= link_to h(role.movie.title), role.movie %> - 
+          <%= role.name %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

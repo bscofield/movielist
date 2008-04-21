@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: quentin
+  identifier: 12345
+
+two:
+  user: aaron
+  identifier: 54321

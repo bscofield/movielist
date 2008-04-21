@@ -1,0 +1,11 @@
+<h1>New api_key</h1>
+
+<%= error_messages_for :api_key %>
+
+<% form_for @api_key, :url => user_api_keys_path do |f| %>
+  <p>
+    <%= f.submit "Create Your Key" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', user_api_keys_path %>

@@ -1,0 +1,13 @@
+<fb:dashboard>
+  <fb:header decoration="add_border" icon="false" />
+</fb:dashboard>
+<fb:tabs>
+  <fb:tab_item href="<%= movies_path %>" title="Movies"></fb:tab_item>
+  <fb:tab_item href="<%= releases_path %>" title="Releases"></fb:tab_item>
+</fb:tabs>
+
+<% if flash[:notice] -%>
+  <fb:success message="<%= h flash[:notice] %>" />
+<% end -%>
+
+<%= yield  %>

@@ -1,0 +1,19 @@
+<h1>Listing releases</h1>
+
+<% @releases.group_by(&:released_on).each do |date, releases| %>
+<h2>Releases for <%= h date %></h2>
+  <ul class="releases">
+    <% releases.each do |release| %>
+      <h3><%= link_to h(release.movie.title), release.movie %></h3>
+      <p><%= h release.format %></p>
+      <%= admin_link_to 'edit', edit_release_path(release), :class => 'html' %>
+      <%= admin_link_to 'destroy', release, 
+        :confirm => 'Are you sure?', :method => :delete, :class => 'html' %>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= will_paginate %>
+<br />
+
+<%= admin_link_to 'New release', new_release_path %>

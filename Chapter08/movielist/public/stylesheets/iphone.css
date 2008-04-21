@@ -1,0 +1,16 @@
+ul#listing li {
+  float: none;
+  padding: 5px 0;
+  width: 100%;
+}
+div#details {
+  float: none;
+  margin: 0;
+  width: 100%;
+}
+.html {
+  display: none;
+}
+#login, #password {
+  -webkit-border-radius: 10px;
+}

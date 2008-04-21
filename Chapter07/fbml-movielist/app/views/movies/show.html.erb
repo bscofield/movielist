@@ -1,0 +1,40 @@
+<fb:header decoration="add_border" icon="false"><%= h @movie.title %></fb:header>
+
+<div style="padding: 1em;">
+  <p><b>Rating:</b> <%= h @movie.rating %></p>
+
+  <%= simple_format h(@movie.description) unless @movie.description.blank? %>
+
+  <% unless @movie.releases.empty? %>
+    <b>Upcoming Releases:</b>
+    <ul style="margin: 0 1em;padding: 0;">
+      <% @movie.releases.each do |release| %>
+        <li>
+          <%= h release.format %> on <%= release.released_on.to_s(:short) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+  <% unless @interest %>
+    <%= link_to 'Add this movie as an interest', 
+      create_interest_path(@movie.id) %>
+  <% else %>
+    <%= link_to 'Remove this movie as an interest', 
+      destroy_interest_path(@interest) %>
+  <% end %>
+  </p>
+
+  <% unless @interested_friends.empty? %>
+    <h3>Friends interested in this movie</h3>
+    <ul style="margin: 0 1em;padding: 0; list-style-type: none">
+      <% @interested_friends.each do |friend| %>
+        <li style="float: left; padding: 5px 5px 0 0;">
+          <fb:profile-pic uid="<%= friend.facebook_id %>" size="square" />
+        </li>
+        <% end %>
+    </ul>
+    <br style="clear:left;" />
+  <% end %>
+</div>

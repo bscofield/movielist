@@ -1,0 +1,55 @@
+<fb:header decoration="add_border" icon="false">Upcoming Releases</fb:header>
+
+<div style="padding: 1em;">
+  <% unless @releases.empty? %>
+    <% unless @own_releases.empty? %>
+      <fb:header decoration="no_padding" icon="false">
+        Releases for your interests
+      </fb:header>
+      <ul style="margin: 0 1em 1em;padding: 0;">
+        <% @own_releases.each do |release| %>
+          <li>
+            <%= link_to h(release.movie.title), movie_path(release.movie_id) %> -
+            <%= h release.format %> on <%= release.released_on.to_s(:short) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>There are no upcoming releases for your interests</p>
+    <% end %>
+
+    <% unless @friend_releases.empty? %>
+      <fb:header decoration="no_padding" icon="false">
+        Releases for your friends' interests
+      </fb:header>
+      <ul style="margin: 0 1em 1em;padding: 0;">
+        <% @friend_releases.each do |release| %>
+          <li>
+            <%= link_to h(release.movie.title), movie_path(release.movie_id) %> -
+            <%= h release.format %> on <%= release.released_on.to_s(:short) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>There are no upcoming releases for your friends' interests</p>
+    <% end %>
+
+    <% unless @other_releases.blank? %>
+    <fb:header decoration="no_padding" icon="false">
+      Other releases
+    </fb:header>
+    <ul style="margin: 0 1em 1em;padding: 0;">
+      <% @other_releases.each do |release| %>
+        <li>
+          <%= link_to h(release.movie.title), movie_path(release.movie_id) %> -
+          <%= h release.format %> on <%= release.released_on.to_s(:short) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no other upcoming releases</p>
+  <% end %>
+<% else %>
+  <p>There are no upcoming releases</p>
+<% end %>
+</div>
